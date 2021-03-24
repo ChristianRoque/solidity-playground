@@ -20,7 +20,7 @@
 require("dotenv").config();
 
 const HDWalletProvider = require("@truffle/hdwallet-provider");
-const privateKeys = process.env.PRIVATE_KEYS || "";
+const privateKey = process.env.PRIVATE_KEYS || "";
 
 module.exports = {
   /**
@@ -42,7 +42,7 @@ module.exports = {
     main: {
       provider: function () {
         return new HDWalletProvider(
-          privateKeys.split(","), // Array of account private keys
+          privateKey, // Array of account private keys
           `https://main.infura.io/v3/${process.env.INFURA_API_KEY}` // Url to an Ethereum Node
         );
       },
@@ -53,7 +53,7 @@ module.exports = {
     rinkeby: {
       provider: function () {
         return new HDWalletProvider(
-          privateKeys.split(","), // Array of account private keys
+          privateKey, // Array of account private keys
           `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}` // Url to an Ethereum Node
         );
       },
@@ -64,7 +64,7 @@ module.exports = {
     ropsten: {
       provider: function () {
         return new HDWalletProvider(
-          privateKeys.split(","), // Array of account private keys
+          privateKey, // Array of account private keys
           `https://ropsten.infura.io/v3/${process.env.INFURA_API_KEY}` // Url to an Ethereum Node
         );
       },
@@ -73,7 +73,7 @@ module.exports = {
       network_id: 3,
     },
   },
-  contracts_directory: "./src/contracts/",
+  contracts_directory: "./contracts",
   contracts_build_directory: "./src/abis/",
   compilers: {
     solc: {
